@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getUser, logout } from "../services/auth.service";
 import { getStats } from "../services/dashboard.service";
 import RevenueChart from "../components/RevenueChart";
+import TopProductsChart from "../components/TopProductsChart";
 import "./Dashboard.css";
 
 const formatMoney = (n) =>
@@ -63,6 +64,7 @@ function Dashboard() {
 
       <section className="chart-section">
         <RevenueChart />
+        <TopProductsChart />
       </section>
     </div>
   );
