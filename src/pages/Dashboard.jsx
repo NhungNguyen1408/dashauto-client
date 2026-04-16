@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUser, logout } from "../services/auth.service";
 import { getStats } from "../services/dashboard.service";
+import RevenueChart from "../components/RevenueChart";
 import "./Dashboard.css";
 
 const formatMoney = (n) =>
@@ -58,6 +59,10 @@ function Dashboard() {
             <div className="stat-value">{c.value}</div>
           </div>
         ))}
+      </section>
+
+      <section className="chart-section">
+        <RevenueChart />
       </section>
     </div>
   );
