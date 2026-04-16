@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getUser, logout } from "../services/auth.service";
 import { getStats } from "../services/dashboard.service";
 import RevenueChart from "../components/RevenueChart";
 import TopProductsChart from "../components/TopProductsChart";
@@ -11,8 +9,6 @@ const formatMoney = (n) =>
   new Intl.NumberFormat("vi-VN").format(n || 0) + " d";
 
 function Dashboard() {
-  const navigate = useNavigate();
-  const user = getUser();
   const [stats, setStats] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -23,11 +19,6 @@ function Dashboard() {
       .catch((err) => setError(err.response?.data?.message || "Loi tai du lieu"))
       .finally(() => setLoading(false));
   }, []);
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   const cards = stats
     ? [
@@ -40,16 +31,8 @@ function Dashboard() {
     : [];
 
   return (
-    <div className="dashboard">
-      <header className="dashboard-header">
-        <h1>Dashboard</h1>
-        <div className="dashboard-user">
-          <span>
-            {user?.username} ({user?.role})
-          </span>
-          <button onClick={handleLogout}>Dang xuat</button>
-        </div>
-      </header>
+    <div>
+      <h1>Dashboard</h1>
 
       {loading && <p>Dang tai...</p>}
       {error && <p className="dashboard-error">{error}</p>}
