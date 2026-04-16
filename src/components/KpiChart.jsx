@@ -13,17 +13,20 @@ import { getKpi } from "../services/dashboard.service";
 
 const formatMoney = (n) => new Intl.NumberFormat("vi-VN").format(n);
 
-function KpiChart() {
+function KpiChart({ dateRange = {} }) {
   const [by, setBy] = useState("region");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    getKpi(by)
+    const params = { by };
+    if (dateRange.from) params.from = dateRange.from;
+    if (dateRange.to) params.to = dateRange.to;
+    getKpi(params)
       .then(setData)
       .finally(() => setLoading(false));
-  }, [by]);
+  }, [by, dateRange.from, dateRange.to]);
 
   return (
     <div className="chart-card">

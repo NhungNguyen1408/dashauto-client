@@ -20,19 +20,22 @@ const formatDate = (iso, groupBy) => {
 
 const formatMoney = (n) => new Intl.NumberFormat("vi-VN").format(n);
 
-function RevenueChart() {
+function RevenueChart({ dateRange = {} }) {
   const [groupBy, setGroupBy] = useState("day");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    getRevenue(groupBy)
+    const params = { groupBy };
+    if (dateRange.from) params.from = dateRange.from;
+    if (dateRange.to) params.to = dateRange.to;
+    getRevenue(params)
       .then((rows) =>
         setData(rows.map((r) => ({ ...r, label: formatDate(r.period, groupBy) })))
       )
       .finally(() => setLoading(false));
-  }, [groupBy]);
+  }, [groupBy, dateRange.from, dateRange.to]);
 
   return (
     <div className="chart-card">

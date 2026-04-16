@@ -1,21 +1,21 @@
 import api from "./api";
 
-export const getStats = async () => {
-  const { data } = await api.get("/dashboard/stats");
+export const getStats = async (params = {}) => {
+  const { data } = await api.get("/dashboard/stats", { params });
   return data;
 };
 
-export const getRevenue = async (groupBy = "day") => {
-  const { data } = await api.get("/dashboard/revenue", { params: { groupBy } });
+export const getRevenue = async (params = {}) => {
+  const { data } = await api.get("/dashboard/revenue", { params });
   return data;
 };
 
-export const getTopProducts = async (limit = 5) => {
-  const { data } = await api.get("/dashboard/top-products", { params: { limit } });
+export const getTopProducts = async (params = {}) => {
+  const { data } = await api.get("/dashboard/top-products", { params });
   return data;
 };
 
-export const getKpi = async (by = "region") => {
-  const { data } = await api.get("/dashboard/kpi", { params: { by } });
+export const getKpi = async (params = {}) => {
+  const { data } = await api.get("/dashboard/kpi", { params });
   return data;
 };

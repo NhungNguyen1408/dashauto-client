@@ -10,15 +10,19 @@ import {
 } from "recharts";
 import { getTopProducts } from "../services/dashboard.service";
 
-function TopProductsChart() {
+function TopProductsChart({ dateRange = {} }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getTopProducts(5)
+    setLoading(true);
+    const params = { limit: 5 };
+    if (dateRange.from) params.from = dateRange.from;
+    if (dateRange.to) params.to = dateRange.to;
+    getTopProducts(params)
       .then(setData)
       .finally(() => setLoading(false));
-  }, []);
+  }, [dateRange.from, dateRange.to]);
 
   return (
     <div className="chart-card">
