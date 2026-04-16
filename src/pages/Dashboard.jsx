@@ -4,6 +4,7 @@ import { getUser, logout } from "../services/auth.service";
 import { getStats } from "../services/dashboard.service";
 import RevenueChart from "../components/RevenueChart";
 import TopProductsChart from "../components/TopProductsChart";
+import KpiChart from "../components/KpiChart";
 import "./Dashboard.css";
 
 const formatMoney = (n) =>
@@ -65,6 +66,7 @@ function Dashboard() {
       <section className="chart-section">
         <RevenueChart />
         <TopProductsChart />
+        <KpiChart />
       </section>
     </div>
   );
