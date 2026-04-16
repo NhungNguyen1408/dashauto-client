@@ -7,6 +7,11 @@ export const login = async (username, password) => {
   return data;
 };
 
+export const register = async (username, password, role) => {
+  const { data } = await api.post("/auth/register", { username, password, role });
+  return data;
+};
+
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");

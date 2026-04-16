@@ -30,14 +30,16 @@
   gap: 0.25rem;
 }
 
-.auth-form input {
+.auth-form input,
+.auth-form select {
   padding: 0.5rem 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
 }
 
-.auth-form input:focus {
+.auth-form input:focus,
+.auth-form select:focus {
   outline: none;
   border-color: #4a90e2;
 }
