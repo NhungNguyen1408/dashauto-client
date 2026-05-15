@@ -10,6 +10,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Settings from "./pages/Settings";
+import Users from "./pages/Users";
+import Profile from "./pages/Profile";
+import AdminRoute from "./components/AdminRoute";
 
 function App() {
   return (
@@ -32,6 +35,15 @@ function App() {
           <Route path="/workflows" element={<Workflows />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/users"
+            element={
+              <AdminRoute>
+                <Users />
+              </AdminRoute>
+            }
+          />
           <Route path="/settings" element={<Settings />} />
         </Route>
       </Routes>
