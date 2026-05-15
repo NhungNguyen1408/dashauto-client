@@ -7,6 +7,7 @@ import Alerts from "./pages/Alerts";
 import Workflows from "./pages/Workflows";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/workflows" element={<Workflows />} />
+          <Route path="/orders" element={<Orders />} />
         </Route>
       </Routes>
     </BrowserRouter>

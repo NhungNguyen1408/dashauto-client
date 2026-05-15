@@ -20,6 +20,7 @@ function Layout() {
           <NavLink to="/reports">Bao cao</NavLink>
           <NavLink to="/alerts">Canh bao</NavLink>
           <NavLink to="/workflows">Automation</NavLink>
+          <NavLink to="/orders">Don hang</NavLink>
         </nav>
       </aside>
 
