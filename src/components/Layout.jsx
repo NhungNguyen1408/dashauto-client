@@ -21,20 +21,13 @@ function Layout() {
           <NavLink to="/reports">Reports</NavLink>
           <NavLink to="/alerts">Alerts</NavLink>
           <NavLink to="/workflows">Automation</NavLink>
-<<<<<<< HEAD
-          <NavLink to="/orders">Don hang</NavLink>
-          <NavLink to="/products">San pham</NavLink>
-          {user?.role === "admin" && (
-            <NavLink to="/users">Tai khoan</NavLink>
-          )}
-          <NavLink to="/profile">Ho so</NavLink>
-          <NavLink to="/settings">Cai dat</NavLink>
-
-=======
           <NavLink to="/orders">Orders</NavLink>
           <NavLink to="/products">Products</NavLink>
+          {user?.role === "admin" && (
+            <NavLink to="/users">Users</NavLink>
+          )}
+          <NavLink to="/profile">Profile</NavLink>
           <NavLink to="/settings">Settings</NavLink>
->>>>>>> 1c94259 (Change UI language to English)
         </nav>
       </aside>
 
