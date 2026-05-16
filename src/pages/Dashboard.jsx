@@ -7,7 +7,7 @@ import KpiChart from "../components/KpiChart";
 import "./Dashboard.css";
 
 const formatMoney = (n) =>
-  new Intl.NumberFormat("vi-VN").format(n || 0) + " d";
+  new Intl.NumberFormat("vi-VN").format(n || 0) + " VND";
 
 function Dashboard() {
   const [dateRange, setDateRange] = useState({ from: "", to: "" });
@@ -23,17 +23,17 @@ function Dashboard() {
     if (dateRange.to) params.to = dateRange.to;
     getStats(params)
       .then(setStats)
-      .catch((err) => setError(err.response?.data?.message || "Loi tai du lieu"))
+      .catch((err) => setError(err.response?.data?.message || "Error loading data"))
       .finally(() => setLoading(false));
   }, [dateRange.from, dateRange.to]);
 
   const cards = stats
     ? [
-        { label: "Tong doanh thu", value: formatMoney(stats.totalRevenue), color: "#4a90e2" },
-        { label: "So don hang", value: stats.totalOrders, color: "#50c878" },
-        { label: "San pham ban ra", value: stats.productsSold, color: "#f5a623" },
-        { label: "Bao cao da tao", value: stats.totalReports, color: "#9b59b6" },
-        { label: "Canh bao mo", value: stats.openAlerts, color: "#e74c3c" },
+        { label: "Total Revenue", value: formatMoney(stats.totalRevenue), color: "#4a90e2" },
+        { label: "Total Orders", value: stats.totalOrders, color: "#50c878" },
+        { label: "Products Sold", value: stats.productsSold, color: "#f5a623" },
+        { label: "Reports Created", value: stats.totalReports, color: "#9b59b6" },
+        { label: "Open Alerts", value: stats.openAlerts, color: "#e74c3c" },
       ]
     : [];
 
@@ -47,7 +47,7 @@ function Dashboard() {
         onChange={setDateRange}
       />
 
-      {loading && <p>Dang tai...</p>}
+      {loading && <p>Loading...</p>}
       {error && <p className="dashboard-error">{error}</p>}
 
       <section className="stat-grid">

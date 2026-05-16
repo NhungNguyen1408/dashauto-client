@@ -11,17 +11,17 @@ function Settings() {
     localStorage.setItem("systemName", systemName);
     localStorage.setItem("adminEmail", email);
     localStorage.setItem("timezone", timezone);
-    setMessage("Da luu cai dat thanh cong");
+    setMessage("Settings saved successfully");
   };
 
   return (
     <div className="page">
-      <h1>Cai dat</h1>
-      <p>Quan ly thong tin he thong va cau hinh van hanh.</p>
+      <h1>Settings</h1>
+      <p>Manage system information and operating configuration.</p>
 
       <div className="filters" style={{ display: "block", padding: "24px" }}>
         <label>
-          Ten he thong
+          System Name
           <input
             value={systemName}
             onChange={(e) => setSystemName(e.target.value)}
@@ -32,7 +32,7 @@ function Settings() {
         <br />
 
         <label>
-          Email quan tri
+          Admin Email
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -43,7 +43,7 @@ function Settings() {
         <br />
 
         <label>
-          Mui gio
+          Time Zone
           <select
             value={timezone}
             onChange={(e) => setTimezone(e.target.value)}
@@ -58,7 +58,7 @@ function Settings() {
         <br />
 
         <button onClick={handleSave} className="btn-primary">
-          Luu cai dat
+          Save Settings
         </button>
 
         {message && <p style={{ color: "green" }}>{message}</p>}

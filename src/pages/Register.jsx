@@ -17,7 +17,7 @@ function Register() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Mat khau xac nhan khong khop");
+      setError("Passwords do not match");
       return;
     }
 
@@ -26,7 +26,7 @@ function Register() {
       await register(username, password, role);
       navigate("/login");
     } catch (err) {
-      setError(err.response?.data?.message || "Dang ky that bai");
+      setError(err.response?.data?.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -35,7 +35,7 @@ function Register() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Dang ky</h1>
+        <h1>Register</h1>
 
         <label>
           Username
@@ -58,7 +58,7 @@ function Register() {
         </label>
 
         <label>
-          Xac nhan password
+          Confirm Password
           <input
             type="password"
             value={confirmPassword}
@@ -68,7 +68,7 @@ function Register() {
         </label>
 
         <label>
-          Vai tro
+          Role
           <select value={role} onChange={(e) => setRole(e.target.value)}>
             <option value="viewer">Viewer</option>
             <option value="manager">Manager</option>
@@ -79,11 +79,11 @@ function Register() {
         {error && <p className="auth-error">{error}</p>}
 
         <button type="submit" disabled={loading}>
-          {loading ? "Dang xu ly..." : "Dang ky"}
+          {loading ? "Processing..." : "Register"}
         </button>
 
         <p className="auth-link">
-          Da co tai khoan? <Link to="/login">Dang nhap</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>

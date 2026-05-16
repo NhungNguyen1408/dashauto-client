@@ -28,46 +28,46 @@ function Products() {
 
   return (
     <div className="page">
-      <h1>San pham</h1>
+      <h1>Products</h1>
 
       <div className="filters">
         <label>
-          Danh muc
+          Category
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="Laptop">Laptop</option>
-            <option value="Phu kien">Phu kien</option>
-            <option value="Man hinh">Man hinh</option>
-            <option value="Am thanh">Am thanh</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Monitor">Monitor</option>
+            <option value="Audio">Audio</option>
           </select>
         </label>
 
         <label>
-          Trang thai
+          Status
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
         </label>
 
-        <span className="total">Tong: {total}</span>
+        <span className="total">Total: {total}</span>
       </div>
 
       {loading ? (
-        <p>Dang tai...</p>
+        <p>Loading...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
               <th>ID</th>
               <th>SKU</th>
-              <th>Ten san pham</th>
-              <th>Danh muc</th>
-              <th>Gia</th>
-              <th>Ton kho</th>
-              <th>Da ban</th>
-              <th>Trang thai</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Sold</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>

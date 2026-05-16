@@ -18,7 +18,7 @@ function Login() {
       await login(username, password);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Dang nhap that bai");
+      setError(err.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -27,7 +27,7 @@ function Login() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Dang nhap</h1>
+        <h1>Login</h1>
 
         <label>
           Username
@@ -52,11 +52,11 @@ function Login() {
         {error && <p className="auth-error">{error}</p>}
 
         <button type="submit" disabled={loading}>
-          {loading ? "Dang xu ly..." : "Dang nhap"}
+          {loading ? "Processing..." : "Login"}
         </button>
 
         <p className="auth-link">
-          Chua co tai khoan? <Link to="/register">Dang ky</Link>
+          Don&apos;t have an account? <Link to="/register">Register</Link>
         </p>
       </form>
     </div>

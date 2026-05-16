@@ -15,11 +15,13 @@ function Layout() {
     <div className="layout">
       <aside className="sidebar">
         <div className="sidebar-brand">DashAuto</div>
+
         <nav className="sidebar-nav">
           <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/reports">Bao cao</NavLink>
-          <NavLink to="/alerts">Canh bao</NavLink>
+          <NavLink to="/reports">Reports</NavLink>
+          <NavLink to="/alerts">Alerts</NavLink>
           <NavLink to="/workflows">Automation</NavLink>
+<<<<<<< HEAD
           <NavLink to="/orders">Don hang</NavLink>
           <NavLink to="/products">San pham</NavLink>
           {user?.role === "admin" && (
@@ -28,6 +30,11 @@ function Layout() {
           <NavLink to="/profile">Ho so</NavLink>
           <NavLink to="/settings">Cai dat</NavLink>
 
+=======
+          <NavLink to="/orders">Orders</NavLink>
+          <NavLink to="/products">Products</NavLink>
+          <NavLink to="/settings">Settings</NavLink>
+>>>>>>> 1c94259 (Change UI language to English)
         </nav>
       </aside>
 
@@ -37,7 +44,7 @@ function Layout() {
             <span>
               {user?.username} ({user?.role})
             </span>
-            <button onClick={handleLogout}>Dang xuat</button>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         </header>
 

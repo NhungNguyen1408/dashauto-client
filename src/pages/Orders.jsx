@@ -32,16 +32,16 @@ function Orders() {
 
   return (
     <div className="page">
-      <h1>Don hang</h1>
+      <h1>Orders</h1>
       <p className="page-desc">
-        Quan ly danh sach don hang, trang thai, khu vuc va doanh thu tung don.
+        Manage the order list, status, region, and revenue of each order.
       </p>
 
       <div className="filters">
         <label>
-          Trang thai
+          Status
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="completed">Completed</option>
             <option value="pending">Pending</option>
             <option value="cancelled">Cancelled</option>
@@ -49,31 +49,31 @@ function Orders() {
         </label>
 
         <label>
-          Khu vuc
+          Region
           <select value={region} onChange={(e) => setRegion(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="Ha Noi">Ha Noi</option>
             <option value="Da Nang">Da Nang</option>
             <option value="Ho Chi Minh">Ho Chi Minh</option>
           </select>
         </label>
 
-        <span className="total">Tong: {total}</span>
+        <span className="total">Total: {total}</span>
       </div>
 
       {loading ? (
-        <p>Dang tai...</p>
+        <p>Loading...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Ma don</th>
-              <th>Khach hang</th>
-              <th>So tien</th>
-              <th>Trang thai</th>
-              <th>Khu vuc</th>
-              <th>Thoi gian</th>
+              <th>Order Code</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Region</th>
+              <th>Time</th>
             </tr>
           </thead>
 
@@ -81,7 +81,7 @@ function Orders() {
             {items.length === 0 ? (
               <tr>
                 <td colSpan="7" className="empty">
-                  Khong co du lieu
+                  No data available
                 </td>
               </tr>
             ) : (

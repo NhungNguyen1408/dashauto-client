@@ -34,19 +34,19 @@ function Alerts() {
       await resolveAlert(id);
       setReloadKey((k) => k + 1);
     } catch (err) {
-      alert(err.response?.data?.message || "Loi xu ly canh bao");
+      alert(err.response?.data?.message || "Error processing alert");
     }
   };
 
   return (
     <div className="page">
-      <h1>Canh bao</h1>
+      <h1>Alerts</h1>
 
       <div className="filters">
         <label>
-          Muc do
+          Severity
           <select value={severity} onChange={(e) => setSeverity(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="info">Info</option>
             <option value="warning">Warning</option>
             <option value="critical">Critical</option>
@@ -54,37 +54,37 @@ function Alerts() {
         </label>
 
         <label>
-          Trang thai
+          Status
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="">Tat ca</option>
-            <option value="open">Chua xu ly</option>
-            <option value="resolved">Da xu ly</option>
+            <option value="">All</option>
+            <option value="open">Open</option>
+            <option value="resolved">Resolved</option>
           </select>
         </label>
 
-        <span className="total">Tong: {total}</span>
+        <span className="total">Total: {total}</span>
       </div>
 
       {loading ? (
-        <p>Dang tai...</p>
+        <p>Loading...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Loai</th>
-              <th>Noi dung</th>
-              <th>Muc do</th>
-              <th>Trang thai</th>
-              <th>Thoi gian</th>
-              <th>Xu ly luc</th>
+              <th>Type</th>
+              <th>Message</th>
+              <th>Severity</th>
+              <th>Status</th>
+              <th>Time</th>
+              <th>Resolved At</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {items.length === 0 ? (
               <tr>
-                <td colSpan="8" className="empty">Khong co du lieu</td>
+                <td colSpan="8" className="empty">No data available</td>
               </tr>
             ) : (
               items.map((a) => (
@@ -105,7 +105,7 @@ function Alerts() {
                   <td>
                     {a.status === "open" && canResolve && (
                       <button className="resolve-btn" onClick={() => handleResolve(a.id)}>
-                        Danh dau xu ly
+                        Mark as Resolved
                       </button>
                     )}
                   </td>

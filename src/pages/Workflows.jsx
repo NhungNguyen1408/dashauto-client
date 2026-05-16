@@ -39,7 +39,7 @@ function Workflows() {
           <div key={w.workflowName} className="workflow-card">
             <div className="workflow-name">{w.workflowName}</div>
             <div className="workflow-last">
-              Lan chay cuoi: {formatDate(w.lastExecutedAt)}
+              Last Run: {formatDate(w.lastExecutedAt)}
             </div>
             <div className={`workflow-status badge badge-${w.lastStatus === "success" ? "success" : "failed"}`}>
               {w.lastStatus}
@@ -57,7 +57,7 @@ function Workflows() {
         <label>
           Workflow
           <select value={workflowName} onChange={(e) => setWorkflowName(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             {summary.map((w) => (
               <option key={w.workflowName} value={w.workflowName}>
                 {w.workflowName}
@@ -67,34 +67,34 @@ function Workflows() {
         </label>
 
         <label>
-          Trang thai
+          Status
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="success">Success</option>
             <option value="failed">Failed</option>
           </select>
         </label>
 
-        <span className="total">Tong: {total}</span>
+        <span className="total">Total: {total}</span>
       </div>
 
       {loading ? (
-        <p>Dang tai...</p>
+        <p>Loading...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
               <th>ID</th>
               <th>Workflow</th>
-              <th>Trang thai</th>
+              <th>Status</th>
               <th>Log</th>
-              <th>Thoi gian chay</th>
+              <th>Run Time</th>
             </tr>
           </thead>
           <tbody>
             {items.length === 0 ? (
               <tr>
-                <td colSpan="5" className="empty">Khong co du lieu</td>
+                <td colSpan="5" className="empty">No data available</td>
               </tr>
             ) : (
               items.map((w) => (

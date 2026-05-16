@@ -26,13 +26,13 @@ function Reports() {
 
   return (
     <div className="page">
-      <h1>Lich su bao cao</h1>
+      <h1>Report History</h1>
 
       <div className="filters">
         <label>
-          Loai bao cao
+          Report Type
           <select value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="">Tat ca</option>
+            <option value="">All</option>
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -40,37 +40,37 @@ function Reports() {
         </label>
 
         <label>
-          Trang thai email
+          Email Status
           <select value={emailStatus} onChange={(e) => setEmailStatus(e.target.value)}>
-            <option value="">Tat ca</option>
-            <option value="success">Thanh cong</option>
-            <option value="failed">That bai</option>
-            <option value="pending">Cho xu ly</option>
+            <option value="">All</option>
+            <option value="success">Success</option>
+            <option value="failed">Failed</option>
+            <option value="pending">Pending</option>
           </select>
         </label>
 
-        <span className="total">Tong: {total}</span>
+        <span className="total">Total: {total}</span>
       </div>
 
       {loading ? (
-        <p>Dang tai...</p>
+        <p>Loading...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Tieu de</th>
-              <th>Loai</th>
-              <th>Noi dung</th>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Content</th>
               <th>Email</th>
-              <th>Nguoi tao</th>
-              <th>Thoi gian</th>
+              <th>Created By</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>
             {items.length === 0 ? (
               <tr>
-                <td colSpan="7" className="empty">Khong co du lieu</td>
+                <td colSpan="7" className="empty">No data available</td>
               </tr>
             ) : (
               items.map((r) => (
